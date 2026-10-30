@@ -5,14 +5,16 @@ body {
 
 #layout {
   display: flex;
-  height: 100vh;
+  height: 50vh;
 }
 
 #sidebar {
   width: 260px;
+  height: 45vh;
   border-right: 1px solid #ccc;
-  padding: 12px;
+  border-bottom: 1px solid #ccc;
   box-sizing: border-box;
+  padding: 12px;
   overflow-y: auto;
 }
 
@@ -23,7 +25,19 @@ body {
 }
 
 #page-title {
-    padding-left: 15px;
+  padding-left: 40%;
+}
+
+.active {
+  padding: 8px;
+  color: #222;
+  white-space: nowrap;  /* Remove text wrap to only show a preview of each question, not the entire text. */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Replace overflow text with an ellipsis (...) */
+  border-top: 3px solid #ccc;
+  border-left: 3px solid #ccc;
+  border-bottom: 3px solid #ccc;
+  border-right: 3px solid #ccc;
 }
 
 .preview {
@@ -31,8 +45,21 @@ body {
   color: #999;
   cursor: pointer;
   white-space: nowrap;  /* Remove text wrap to only show a preview of each question, not the entire text. */
-  overflow: hidden;            
+  overflow: hidden;
   text-overflow: ellipsis; /* Replace overflow text with an ellipsis (...) */
+}
+
+.preview:hover{
+  padding: 8px;
+  color: #999;
+  cursor: pointer;
+  white-space: nowrap;  /* Remove text wrap to only show a preview of each question, not the entire text. */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Replace overflow text with an ellipsis (...) */
+  border-top: 3px solid #ccc;
+  border-left: 3px solid #ccc;
+  border-bottom: 3px solid #ccc;
+  border-right: 3px solid #ccc;
 }
 
 .card {
@@ -42,11 +69,18 @@ body {
 .question {
   cursor: pointer;
   font-size: 18px;
+  padding: 20px;
+  box-sizing: border-box;
+  border-top: 3px solid #ccc;
+  border-left: 3px solid #ccc;
+  border-bottom: 3px solid #ccc;
+  border-right: 3px solid #ccc;
 }
 
 .answer {
   color: #8bc98b;
   font-weight: bold;
+  box-sizing: border-box;
 }
 
 .hidden {

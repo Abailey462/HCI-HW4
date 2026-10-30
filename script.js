@@ -15,8 +15,22 @@ const newAnswer = document.querySelector("#new-answer");
 const editDialog = document.querySelector("#edit-dialog");
 const editQuestion = document.querySelector("#edit-question");
 const editAnswer = document.querySelector("#edit-answer");
-// TODO: grab references to any necessary elements you added to index.html (search, counter, prev/next buttons)
+const prevButton = document.querySelector("#prev-button");
+const nextButton = document.querySelector("#next-button");
+const counter = document.querySelector("#counter");
 
+// TODO: grab references to any necessary elements you added to index.html (search, counter, prev/next buttons)
+prevButton.addEventListener("click", function () {
+  if (questions.length === 0) return;
+  currentIndex = (currentIndex - 1 + questions.length) % questions.length;
+  showPage();
+});
+
+nextButton.addEventListener("click", function () {
+  if (questions.length === 0) return;
+  currentIndex = (currentIndex + 1) % questions.length;
+  showPage();
+});
 
 // ---------- Errors ----------
 
@@ -77,6 +91,12 @@ function showPage() {
   // keep currentIndex inside the list (e.g. after a delete)
   if (currentIndex >= questions.length) currentIndex = questions.length - 1;
   if (currentIndex < 0) currentIndex = 0;
+
+  counter.textContent = questions.length
+    ? `Card ${currentIndex + 1} of ${questions.length}`
+    : "Card 0 of 0";
+
+  prevButton.disabled = nextButton.disabled = questions.length === 0;
   renderPreviews();
   showCard();
 }
@@ -89,6 +109,7 @@ function renderPreviews() {
     preview.className = "preview";
     if (index === currentIndex) {
       preview.classList.add("active");
+      preview.classList.remove("preview")
     }
     preview.textContent = question.q;
     preview.addEventListener("click", function () {
@@ -177,6 +198,12 @@ document.querySelector("#update-button").addEventListener("click", async functio
 });
 
 document.querySelector("#add-button").addEventListener("click", async function () {
+
+  if (!newQuestion.value || !newAnswer.value) {
+    showError("Please enter both a question and an answer.");
+    return;
+  }
+
   await apiSend("POST", "/add", {
     question: newQuestion.value,
     answer: newAnswer.value

@@ -13,22 +13,33 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-questions = [{
-                "id": 0,
-                "q": "Is Fitts' Law an example of a predictive model or a descriptive model?",
-                "a": "Predictive model"
-                },
-             {
-                "id": 1,
-                "q": "Does this course focus more on genius design, systems design, or user-centered design?",
-                "a": "User-centered design"
-                },
-             {
-                "id": 2,
-                "q": "What is the main goal of the ideation phase of iterative design?",
-                "a": "Generating as many possible design solutions as possible"
-                }
-            ]
+questions = [
+    {
+        "id": 0,
+        "q": "Is Fitts' Law an example of a predictive model or a descriptive model?",
+        "a": "Predictive model"
+    },
+    {
+        "id": 1,
+        "q": "Does this course focus more on genius design, systems design, or user-centered design?",
+        "a": "User-centered design"
+    },
+    {
+        "id": 2,
+        "q": "What is the main goal of the ideation phase of iterative design?",
+        "a": "Generating as many possible design solutions as possible"
+    },
+    {
+        "id": 3,
+        "q": "What are WCAG's four principles of accessibility?",
+        "a": "Perceivable, Operable, Understandable, Robust"
+    },
+    {
+        "id": 4,
+        "q": "What attribute can you use to include an image description for all <img> elements?",
+        "a": "alt"
+    },
+]
 
 class QuestionRequest(BaseModel):
     question: str
